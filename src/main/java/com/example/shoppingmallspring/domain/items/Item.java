@@ -4,11 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
 @ToString
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
+
 public class Item {
 
     @Id
@@ -25,7 +27,7 @@ public class Item {
     @Column(nullable = false)
     private int stockNumber;//재고
 
-    @Lob
+//    @Lob
     @Column(nullable = false)
     private String itemDetail;//상품 상세설명
 
