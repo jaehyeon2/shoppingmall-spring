@@ -30,14 +30,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/members/login/error")
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/members/login"))
-                .logoutSuccessUrl("/");
+                .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
+                .logoutSuccessUrl("/")
+        ;
+
         http.authorizeHttpRequests()
                 .mvcMatchers("/", "/members/**", "/item/**", "/assets/**", "/h2-console/**").permitAll()
-                .mvcMatchers("/admin/**").hasRole("ADMIN");
+                .mvcMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+        ;
         http
                 .exceptionHandling()
-                .authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+        ;
     }
 
     @Bean

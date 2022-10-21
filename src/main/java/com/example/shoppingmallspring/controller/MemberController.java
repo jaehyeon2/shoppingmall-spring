@@ -34,12 +34,24 @@ public class MemberController {
         }
         try{
             Member member = Member.createMember(memberFormDto, passwordEncoder);
-            memberService.saveMember(member);
+            Member savedMember = memberService.saveMember(member);
+            System.out.println(savedMember.getEmail());
         }catch(IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
             return "member/memberForm";
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String loginMember(){
+        return "member/memberLoginForm";
+    }
+
+    @GetMapping("/login/error")
+    public String loginError(Model model){
+        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인하세요.");
+        return "member/memberLoginForm";
     }
 }

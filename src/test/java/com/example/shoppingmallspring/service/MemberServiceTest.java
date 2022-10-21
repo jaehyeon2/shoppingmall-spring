@@ -4,6 +4,7 @@ import com.example.shoppingmallspring.domain.members.Member;
 import com.example.shoppingmallspring.dto.MemberFormDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
